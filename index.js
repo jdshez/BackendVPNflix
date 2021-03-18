@@ -4,7 +4,7 @@ const port = process.env.PORT || 3006;
 const bodyParser = require('body-parser');
 const scraper = require('./scraper');
 //const db = require('./db');
-
+const cors = require('cors');
 
 app.use(bodyParser.json());
 app.use(function(req,res,next) {
@@ -12,6 +12,9 @@ app.use(function(req,res,next) {
     res.header("Access-Control-Allow-Headers", "Content-Type");
     next();
 })
+
+
+app.use(cors());
 
 app.get('/movies', async (req, res) => {
     console.log('server working')
