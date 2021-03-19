@@ -17,7 +17,8 @@ app.use(function(req,res,next) {
 
 
 app.get('/movies', async (req, res) => {
-    console.log('server working')
+    console.log('server working');
+    res.send({msg: 'server working'})
 });
 /* gETTING MOVIES FROM db     app.get('/movies', async (req, res) => {
         const movies = await db.getMovies();
