@@ -6,20 +6,21 @@ const scraper = require('./scraper');
 //const db = require('./db');
 const cors = require('cors');
 
-/*app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(function(req,res,next) {
     res.header("Access-Control-Allow-Origin", "*"); // disables security on localhost
     res.header("Access-Control-Allow-Headers", "Content-Type");
     next();
-})*/
+})
 
 app.use(cors());
 
 
 
-app.get('/movies', async (req, res) => {
+app.get('/movies', async (req, res, next) => {
     console.log('server working');
-    res.send({msg: 'CORS server working'})
+    res.send({msg: 'CORS server working'});
+    next();
 });
 /* gETTING MOVIES FROM db     app.get('/movies', async (req, res) => {
         const movies = await db.getMovies();
@@ -29,7 +30,7 @@ app.get('/movies', async (req, res) => {
         //db.clearTable();
 });*/
 
-app.post('/movies', async (req, res) => {
+app.post('/movies', async (req, res, next) => {
     console.log(req.body)
     const movieData = await scraper.scrapeMovies(req.body.search)
     // new try 2/12/20
