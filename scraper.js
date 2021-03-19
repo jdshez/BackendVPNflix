@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 const { v4: uuidv4 } = require('uuid');
 
 async function scrapeMovies(url) {
-    const browser = await puppeteer.launch({headless: false});
+    const browser = await puppeteer.launch({headless: true});
     const page = await browser.newPage();
 
     //waitUntil property very important to load all js on page otherwise nothing useful can be scraped!
