@@ -3,7 +3,14 @@ const cheerio = require('cheerio');
 const { v4: uuidv4 } = require('uuid');
 
 async function scrapeMovies(url) {
-    const browser = await puppeteer.launch({headless: true});
+    // const browser = await puppeteer.launch({headless: true});  Works local but use below for deploy!
+    const browser = await puppeteer.launch({
+        headless: true,
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+          ]
+    });
     const page = await browser.newPage();
 
     //waitUntil property very important to load all js on page otherwise nothing useful can be scraped!
